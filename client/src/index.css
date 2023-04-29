@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+@layer components {
+  .custom-added-1 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .custom-added-2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .custom-added-3 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .custom-added-4 {
+    --tw-space-x-reverse: 0;
+    margin-left: calc(1rem*(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(1rem*var(--tw-space-x-reverse));
+  }
+  .custom-added-5 {
+    --tw-space-x-reverse: 0;
+    margin-top: calc(1rem*(1 - var(--tw-space-x-reverse)));
+    margin-bottom: calc(1rem*var(--tw-space-x-reverse));
+  }
+  .custom-added-6 {
+      height : var(--customheight);
+  }
+  .custom-added-7 {
+    padding-bottom: 1rem;
+  }
+  .custom-added-8 {
+    margin: 0 1rem;
+  }
+  .custom-added-9 {
+    margin: 0 auto;
+  }
+  .custom-added-10{
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  .custom-added-11{
+    margin: 1.5rem auto;
+  }
+  .custom-added-12{
+    overflow: hidden;
+  }
+  .custom-added-13{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+  .custom-added-14{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .custom-added-15{
+    margin-left: 1.5rem;
+  }
+}

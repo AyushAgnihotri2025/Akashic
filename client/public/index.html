@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Akashic: The Smart Resource Management System" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <!--
+          manifest.json provides metadata used when your web app is installed on a
+          user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+        -->
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <script src="https://cdn.mrayush.me/jquery/2.2.4.min.js"></script>
+        <script src="https://cdn.mrayush.me/js/Akashic/jquery.paginate.min.js"></script>
+        <script src="https://cdn.mrayush.me/bootstrap/3.3.6/bootstrap.min.js"></script>
+        <script src="https://cdn.mrayush.me/jslick/1.6.0/slick.min.js"></script>
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+        <script src="https://cdn.mrayush.me/smartConsole/v1.0.0/smart.console.min.js"></script>
+        <!--
+          Notice the use of %PUBLIC_URL% in the tags above.
+          It will be replaced with the URL of the `public` folder during the build.
+          Only files inside the `public` folder can be referenced from the HTML.
+
+          Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+          work correctly both with client-side routing and a non-root public URL.
+          Learn how to configure a non-root public URL by running `npm run build`.
+        -->
+        <title>Akashic</title>
+        <style>
+            /* preloader */
+            .no-scroll-preload {
+                overflow: hidden;
+            }
+
+            :root {
+                --atom-size: 400px;
+                /* --atom-color-hex: #0d00ff; */
+                --atom-color-hex: #0d00ff;
+                --atom-color-rgb: 217, 217, 217;
+                --nucleus-size: calc(var(--atom-size) / 5);
+                --electron-color-hex: #36c5f0;
+                --electron-size: calc(var(--atom-size) / 25);
+                --electron-orbit-size: calc(var(--atom-size) / 2.5);
+                --electron-speed: 1.2s;
+                --electron-speed-alpha: 1s;
+                --electron-speed-omega: 0.8s;
+            }
+
+            .loader-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #202124;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999999;
+                color: white;
+            }
+
+            /* Atom */
+            .atom {
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                width: var(--atom-size);
+                height: var(--atom-size);
+                animation: 8s atom infinite cubic-bezier(1, 0.25, 0, 0.75);
+            }
+
+            @keyframes atom {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+
+                12.5% {
+                    transform: rotate(-45deg) scale(0.9);
+                }
+
+                25% {
+                    transform: rotate(-90deg) scale(1);
+                }
+
+                37.5% {
+                    transform: rotate(-135deg) scale(0.9);
+                }
+
+                50% {
+                    transform: rotate(-180deg) scale(1);
+                }
+
+                62.5% {
+                    transform: rotate(-225deg) scale(0.9);
+                }
+
+                75% {
+                    transform: rotate(-270deg) scale(1);
+                }
+
+                87.5% {
+                    transform: rotate(-315deg) scale(0.9);
+                }
+
+                100% {
+                    transform: rotate(-360deg) scale(1);
+                }
+            }
+
+            /* Nucleus */
+            .atom::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: var(--nucleus-size);
+                height: var(--nucleus-size);
+                margin-top: calc(var(--nucleus-size) / -2);
+                margin-left: calc(var(--nucleus-size) / -2);
+                background: var(--electron-color-hex);
+                /* var(--atom-color-hex); */
+                border-radius: 100%;
+                box-shadow: 0 0 3px 0 var(--atom-color-hex);
+                animation: 3s nucleus infinite cubic-bezier(0.65, 0, 0.35, 1);
+            }
+
+            @keyframes nucleus {
+                0% {
+                    transform: scale(1);
+                }
+
+                25% {
+                    transform: scale(0.9);
+                }
+
+                50% {
+                    transform: scale(1);
+                }
+
+                75% {
+                    transform: scale(0.85);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            /* Electron Orbit */
+            .atom > [class^="electron"] {
+                border-top: solid rgba(var(--atom-color-rgb), 0.5) 1px;
+                border-right: solid rgba(var(--atom-color-rgb), 0.35) 2px;
+                border-bottom: solid rgba(var(--atom-color-rgb), 0.2) 4px;
+                border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
+                border-radius: 100%;
+                width: 100%;
+                height: var(--electron-orbit-size);
+                position: absolute;
+                top: 50%;
+                margin-top: calc(var(--electron-orbit-size) / -2);
+                animation: var(--electron-speed) electron-orbit infinite linear;
+            }
+
+            .atom > .electron-alpha {
+                transform: rotate(60deg);
+                animation: var(--electron-speed-alpha) electron-orbit infinite linear;
+            }
+
+            .atom > .electron-omega {
+                transform: rotate(-60deg);
+                animation: var(--electron-speed-omega) electron-orbit infinite linear;
+            }
+
+            @keyframes electron-orbit {
+                0% {
+                    border-top: solid rgba(var(--atom-color-rgb), 1) 5px;
+                    border-right: solid rgba(var(--atom-color-rgb), 1) 7px;
+                    border-bottom: solid rgba(var(--atom-color-rgb), 0.2) 10px;
+                    border-left: solid rgba(var(--atom-color-rgb), 0) 10px;
+                }
+
+                25% {
+                    border-top: solid rgba(var(--atom-color-rgb), 0.35) 5px;
+                    border-right: solid rgba(var(--atom-color-rgb), 0.2) 7px;
+                    border-bottom: solid rgba(var(--atom-color-rgb), 0) 10px;
+                    border-left: solid rgba(var(--atom-color-rgb), 0.5) 10px;
+                }
+
+                50% {
+                    border-top: solid rgba(var(--atom-color-rgb), 0.2) 5px;
+                    border-right: solid rgba(var(--atom-color-rgb), 0) 7px;
+                    border-bottom: solid rgba(var(--atom-color-rgb), 0.5) 10px;
+                    border-left: solid rgba(var(--atom-color-rgb), 0.35) 10px;
+                }
+
+                75% {
+                    border-top: solid rgba(var(--atom-color-rgb), 0) 5px;
+                    border-right: solid rgba(var(--atom-color-rgb), 0.5) 7px;
+                    border-bottom: solid rgba(var(--atom-color-rgb), 0.35) 10px;
+                    border-left: solid rgba(var(--atom-color-rgb), 0.2) 10px;
+                }
+
+                100% {
+                    border-top: solid rgba(var(--atom-color-rgb), 1) 5px;
+                    border-right: solid rgba(var(--atom-color-rgb), 1) 7px;
+                    border-bottom: solid rgba(var(--atom-color-rgb), 1) 10px;
+                    border-left: solid rgba(var(--atom-color-rgb), 1) 10px;
+                }
+            }
+
+            /* Electron Unit */
+            .atom [class^="electron"]::after {
+                content: "";
+                display: block;
+                width: var(--electron-size);
+                height: var(--electron-size);
+                /* background: #E01E5A; */
+                border-radius: 50%;
+                margin-top: calc(var(--electron-size) / -2);
+                position: absolute;
+                top: 50%;
+                left: calc(var(--electron-size) / -1);
+                transform: scale(1);
+                animation: calc(var(--electron-speed) * 2) electron infinite ease-in-out;
+            }
+
+            .atom .electron::after {
+                background: #ecb22e;
+            }
+
+            .atom .electron-alpha::after {
+                animation: calc(var(--electron-speed-alpha) * 2) electron infinite ease-in-out;
+                background: #e01e5a;
+            }
+
+            .atom .electron-omega::after {
+                animation: calc(var(--electron-speed-omega) * 2) electron infinite ease-in-out;
+                background: #2eb67d;
+            }
+
+            @keyframes electron {
+                0% {
+                    left: calc(var(--electron-size) / -1);
+                    transform: scale(1);
+                }
+
+                12.5% {
+                    top: 100%;
+                    transform: scale(1.5);
+                }
+
+                25% {
+                    left: 100%;
+                    transform: scale(1);
+                }
+
+                37.5% {
+                    top: 0%;
+                    transform: scale(0.25);
+                }
+
+                50% {
+                    left: calc(var(--electron-size) / -1);
+                    transform: scale(1);
+                }
+
+                62.5% {
+                    top: 100%;
+                    transform: scale(1.5);
+                }
+
+                75% {
+                    left: 100%;
+                    transform: scale(1);
+                }
+
+                87.5% {
+                    top: 0%;
+                    transform: scale(0.25);
+                }
+
+                100% {
+                    left: calc(var(--electron-size) / -1);
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes fadeInAnimation {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .disappear {
+                animation: vanish 1s forwards;
+            }
+
+            @keyframes vanish {
+                100% {
+                    opacity: 1;
+                    visibility: hidden;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">
+            <div class="loader-container">
+                <div class="atom">
+                    <div class="electron"></div>
+                    <div class="electron-alpha"></div>
+                    <div class="electron-omega"></div>
+                </div>
+            </div>
+        </div>
+        <!--
+          This HTML file is a template.
+          If you open it directly in the browser, you will see an empty page.
+
+          You can add webfonts, meta tags, or analytics to this file.
+          The build step will place the bundled scripts into the <body> tag.
+
+          To begin the development, run `npm start` or `yarn start`.
+          To create a production bundle, use `npm run build` or `yarn build`.
+        -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YV3KBQVTT"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-4YV3KBQVTT");
+        </script>
+    </body>
+</html>
