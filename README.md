@@ -2,8 +2,6 @@
 
 # Akashic: The Smart Resource Management System 🔥
 
-Made By with 💖 by [@AyushAgnihotri2025](https://mrayush.me?refer=githubproject_Akashic)
-
 <p align="center">
    <img width="70%" src="https://user-images.githubusercontent.com/106915790/235305819-795c981c-d3f1-4693-ad01-c2f1a52201c7.jpg" />
 </p>
@@ -133,7 +131,6 @@ https://user-images.githubusercontent.com/106915790/234867441-ba381e58-6754-4f6d
 https://user-images.githubusercontent.com/106915790/234867469-377c90b9-a8ae-4f3d-ac17-b4c9bed9399c.mp4
 
 
-
 ## 🪞 How it looks like.
 
 | Public Website | Smart Login Portal |
@@ -143,7 +140,6 @@ https://user-images.githubusercontent.com/106915790/234867469-377c90b9-a8ae-4f3d
 ## 🛠️ Installation Steps
 
 **1**. [Fork](https://github.com/AyushAgnihotri2025/Akashic) the project. Click on the <a href="https://github.com/AyushAgnihotri2025/Akashic/fork"><img src="https://i.imgur.com/G4z1kEe.png" height="15" width="15"></a> icon in the top right to get started
-
 
 **2**. Clone the project, you can use the following command:
 
@@ -186,7 +182,6 @@ git push
 ## Project TimeLine (Gantt Chart)
 
 ![Gantt Chart](https://user-images.githubusercontent.com/106915790/234873317-499ea26f-96d1-4a87-9aad-5e4b326a6d20.png)
-
 
 # Documentation
 * <a href="https://docs.google.com/viewer?url=https://cdn.mrayush.me/akashic/docs/Presentation%20-%20Akashic.pdf">Presentation</a>
